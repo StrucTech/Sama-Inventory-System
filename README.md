@@ -1,6 +1,6 @@
-# Sama Inventory Management System 📦
+# 📦 Sama Inventory System - Premium Edition
 
-نظام إدارة المخزون المتقدم - تطبيق سطح مكتب مطور بـ Python يتصل مع Google Sheets لتخزين ومزامنة البيانات.
+نظام إدارة المخزون المتقدم مع واجهة فاخرة وتحديث تلقائي
 
 [![GitHub release](https://img.shields.io/github/release/StrucTech/Sama-Inventory-System.svg)](https://github.com/StrucTech/Sama-Inventory-System/releases)
 [![GitHub downloads](https://img.shields.io/github/downloads/StrucTech/Sama-Inventory-System/total.svg)](https://github.com/StrucTech/Sama-Inventory-System/releases)
