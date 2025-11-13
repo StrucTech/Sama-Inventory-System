@@ -43,7 +43,7 @@ if "%NEW_VERSION%"=="" (
 )
 
 :: التحقق من تنسيق الإصدار
-echo %NEW_VERSION% | findstr /r "^v[0-9]*\.[0-9]*\.[0-9]*$" > nul
+echo %NEW_VERSION% | findstr /r "^v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$" > nul
 if errorlevel 1 (
     echo ❌ تنسيق الإصدار غير صحيح! استخدم v1.0.0
     pause
