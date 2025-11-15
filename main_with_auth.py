@@ -13,6 +13,24 @@ import urllib.error
 # إضافة مسار المشروع
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+# فحص الإعداد الأولي
+def check_initial_setup():
+    """فحص إذا كان الإعداد الأولي مطلوب"""
+    if not os.path.exists('config/credentials.json'):
+        print("🔧 الإعداد الأولي مطلوب...")
+        try:
+            from setup_wizard import SetupWizard
+            wizard = SetupWizard()
+            wizard.run()
+            return True
+        except Exception as e:
+            messagebox.showerror(
+                "خطأ في الإعداد", 
+                f"فشل في تشغيل معالج الإعداد:\n{str(e)}\n\nيرجى إعداد ملف config/credentials.json يدوياً"
+            )
+            return False
+    return False
+
 from gui.login_window import LoginWindow
 from gui.main_window import MainWindow
 from config.settings import load_config
@@ -71,7 +89,13 @@ class InventoryApp:
         """بدء التطبيق"""
         print("🚀 بدء تشغيل نظام إدارة المخزون...")
         
-        # فحص الاتصال بالإنترنت أولاً
+        # فحص الإعداد الأولي أولاً
+        if check_initial_setup():
+            print("✅ تم اكتمال الإعداد الأولي، إعادة تشغيل التطبيق...")
+            # إعادة تحميل الإعدادات بعد الإعداد
+            self.config = load_config()
+        
+        # فحص الاتصال بالإنترنت
         print("🔍 فحص الاتصال بالإنترنت...")
         while not check_internet_connection():
             print("❌ لا يوجد اتصال بالإنترنت")
